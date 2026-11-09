@@ -1,0 +1,455 @@
+/* =====================================================================
+   Components. Class names follow BEM: block, block__element,
+   block--modifier. It keeps selectors flat and easy to search for.
+   ===================================================================== */
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 2.5rem;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--control-radius);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.btn:hover {
+  background: var(--color-accent-strong);
+  border-color: var(--color-accent-strong);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--ghost:hover {
+  background: var(--color-surface-raised);
+  border-color: var(--color-text-muted);
+}
+
+.btn--small {
+  min-height: 2rem;
+  padding: 0 var(--space-3);
+  font-size: var(--text-xs);
+}
+
+.btn--danger:hover {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+  background: transparent;
+}
+
+/* ---------- Cards and grids ---------- */
+
+.card {
+  padding: var(--card-padding);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  background: var(--color-surface);
+}
+
+.card--narrow {
+  max-width: 30rem;
+  margin: var(--space-6) auto;
+}
+
+.stack {
+  display: grid;
+  gap: var(--card-gap);
+}
+
+.stack--loose { gap: var(--space-6); }
+
+/* auto-fit + minmax: as many columns as fit, each at least 17rem wide.
+   One column on a phone, three on a desktop, with no media query. */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
+  gap: var(--card-gap);
+  align-items: start;
+}
+
+.eyebrow {
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.hero {
+  display: grid;
+  gap: var(--space-3);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero__tagline {
+  max-width: 40rem;
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+}
+
+.status {
+  padding: var(--space-5) 0;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.status--error { color: var(--color-danger); }
+
+/* ---------- Ranked lists (Top 10) ---------- */
+
+.ranked {
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: rank;
+}
+
+.ranked__item {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.ranked__position {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  /* tabular-nums gives every digit the same width so the column lines up. */
+  font-variant-numeric: tabular-nums;
+}
+
+.ranked__title { overflow-wrap: anywhere; }
+
+.ranked__artist {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* ---------- Forms ---------- */
+
+.form {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.form__row {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.form__error { color: var(--color-danger); font-size: var(--text-sm); }
+.form__success { color: var(--color-accent-strong); font-size: var(--text-sm); }
+
+.field {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.field__label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.field__input {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg);
+  transition: border-color var(--transition);
+}
+
+.field__input:focus-visible {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+textarea.field__input {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.check input { accent-color: var(--color-accent); }
+
+/* ---------- Dialog ---------- */
+
+.dialog {
+  width: min(26rem, calc(100% - 2 * var(--space-4)));
+  padding: var(--card-padding);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.dialog::backdrop { background: var(--color-backdrop); }
+
+/* ---------- Audio player ---------- */
+
+.player {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--control-radius);
+  background: var(--color-surface-raised);
+}
+
+.player__toggle {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.player__toggle:hover { background: var(--color-accent-strong); }
+.player__toggle:disabled { opacity: 0.5; cursor: not-allowed; }
+.player__toggle svg { width: 1rem; height: 1rem; fill: currentColor; }
+
+.player__time {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.player__error {
+  grid-column: 1 / -1;
+  padding: 0 var(--space-2) var(--space-1);
+  color: var(--color-danger);
+  font-size: var(--text-xs);
+}
+
+.player--error { border-radius: var(--card-radius); }
+
+/* The scrub bar is a real <input type="range">, so keyboard and touch
+   work without any JavaScript. We only restyle it. --progress is set
+   from audioPlayer.js and paints the "already played" part. */
+.player__scrub {
+  --progress: 0%;
+  width: 100%;
+  height: 1.25rem;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.player__scrub::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    var(--color-accent) var(--progress),
+    var(--color-border) var(--progress)
+  );
+}
+
+.player__scrub::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-border);
+}
+
+.player__scrub::-moz-range-progress {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-accent);
+}
+
+.player__scrub::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--color-text);
+}
+
+.player__scrub::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-text);
+}
+
+/* ---------- Dedication cards ---------- */
+
+.feed {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.dedication {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.dedication--archived { opacity: 0.6; }
+
+.dedication__track {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.quote {
+  margin: 0;
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--color-accent);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-style: italic;
+  line-height: 1.5;
+  /* Keep the line breaks the author typed in the lyrics. */
+  white-space: pre-line;
+}
+
+.dedication__note { white-space: pre-line; }
+
+.dedication__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+}
+
+.dedication__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.history {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.history__item {
+  padding: var(--space-3);
+  border-radius: 10px;
+  background: var(--color-surface-raised);
+}
+
+.history__when {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+
+.history__text { white-space: pre-line; }
+
+/* ---------- Song search results ---------- */
+
+.results {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.results__item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.results__item:hover {
+  border-color: var(--color-accent);
+  background: var(--color-surface-raised);
+}
+
+.results__artist {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.results__badge {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+/* ---------- Wider screens ---------- */
+
+@media (min-width: 44rem) {
+  .form__row { grid-template-columns: 1fr 1fr; }
+}

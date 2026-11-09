@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Two people, one shared record collection.">
+  <title>Liner Notes</title>
+
+  <!-- Order matters: tokens define the variables the other two files use. -->
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+
+  <!-- type="module" turns on import/export, runs the script after the HTML
+       is parsed (like "defer"), and keeps its variables out of the global scope. -->
+  <script type="module" src="src/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" data-link>
+      <span class="brand__name">Liner Notes</span>
+      <span class="brand__sub">a shared record collection</span>
+    </a>
+
+    <nav class="nav" aria-label="Main">
+      <a class="nav__link" href="?profile=machukaw" data-link data-route="machukaw">machukaw</a>
+      <a class="nav__link" href="?profile=novyyzhv" data-link data-route="novyyzhv">novyyzhv</a>
+      <a class="nav__link" href="?view=ours" data-link data-route="ours" id="ours-link" hidden>Ours</a>
+    </nav>
+
+    <div class="session">
+      <span class="session__who" id="session-who" hidden></span>
+      <button class="btn btn--ghost" id="auth-button" type="button">Sign in</button>
+    </div>
+  </header>
+
+  <!-- Everything dynamic is rendered into this element by src/app.js.
+       aria-live makes screen readers announce view changes. -->
+  <main id="view" class="view" aria-live="polite">
+    <p class="status">Loading...</p>
+  </main>
+
+  <footer class="site-footer">
+    <p>Made by two people who kept sending each other songs.</p>
+  </footer>
+
+  <!-- <dialog> is a native modal: focus trapping, Esc to close and the
+       dimmed backdrop all come for free with dialog.showModal(). -->
+  <dialog class="dialog" id="login-dialog" aria-labelledby="login-title">
+    <form class="form" id="login-form" novalidate>
+      <h2 id="login-title">Sign in</h2>
+      <p class="muted">For the two of us only.</p>
+      <label class="field">
+        <span class="field__label">Email</span>
+        <input class="field__input" type="email" name="email" autocomplete="username" required>
+      </label>
+      <label class="field">
+        <span class="field__label">Password</span>
+        <input class="field__input" type="password" name="password" autocomplete="current-password" required>
+      </label>
+      <p class="form__error" id="login-error" role="alert" hidden></p>
+      <div class="form__actions">
+        <button class="btn btn--ghost" type="button" id="login-cancel">Cancel</button>
+        <button class="btn" type="submit">Sign in</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>
