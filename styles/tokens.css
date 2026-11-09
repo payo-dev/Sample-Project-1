@@ -1,0 +1,72 @@
+/* =====================================================================
+   Design tokens
+   Every colour, font and spacing value in the app comes from here.
+   To re-theme the site, change values in this file only.
+
+   A custom property is declared as  --name: value;  and read with
+   var(--name). It cascades like any other CSS property, which is why a
+   block further down can override the whole palette for one theme.
+   ===================================================================== */
+
+:root {
+  /* Colour: "late night listening" (default) */
+  --color-bg: #14110f;
+  --color-surface: #1e1a17;
+  --color-surface-raised: #29231f;
+  --color-border: #3a322c;
+  --color-text: #f1e9df;
+  --color-text-muted: #a89a8b;
+  --color-accent: #d9a05b;
+  --color-accent-strong: #eebb7a;
+  --color-on-accent: #1b140c;
+  --color-danger: #e0796b;
+  --color-backdrop: rgb(8 6 5 / 0.72);
+
+  /* Typography */
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  /* clamp(min, preferred, max) scales text with the viewport, no media query needed. */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: clamp(1.15rem, 1rem + 0.6vw, 1.35rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1.4vw, 2.1rem);
+  --text-2xl: clamp(2.1rem, 1.5rem + 3.2vw, 3.6rem);
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  /* Cards and layout */
+  --card-padding: var(--space-5);
+  --card-radius: 14px;
+  --card-gap: var(--space-4);
+  --control-radius: 999px;
+  --page-gutter: var(--space-4);
+  --page-max: 68rem;
+
+  --transition: 160ms ease;
+}
+
+/* Alternative theme. Activate it with <html data-theme="daylight">.
+   Only the values that differ need to be repeated. */
+:root[data-theme="daylight"] {
+  --color-bg: #f6f1ea;
+  --color-surface: #fffaf3;
+  --color-surface-raised: #f0e7da;
+  --color-border: #dccfbd;
+  --color-text: #2a221b;
+  --color-text-muted: #75675a;
+  --color-accent: #a4551f;
+  --color-accent-strong: #873f10;
+  --color-on-accent: #fff8ef;
+  --color-danger: #a8321f;
+  --color-backdrop: rgb(42 34 27 / 0.45);
+}

@@ -1,0 +1,14 @@
+{
+  "name": "liner-notes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A shared music space for two, in vanilla JavaScript and Supabase.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-config.mjs",
+    "dev": "node --env-file-if-exists=.env scripts/build-config.mjs && node --env-file-if-exists=.env scripts/dev-server.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

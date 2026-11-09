@@ -1,0 +1,8 @@
+# Generated from environment variables by scripts/build-config.mjs
+src/config.js
+
+# Local secrets
+.env
+
+node_modules/
+.vercel/
